@@ -14,8 +14,17 @@ import {MatIconModule} from '@angular/material/icon'
 export class SidebarItemComponent {
   constructor(private router: Router) {
   }
-  toggle(e:Event){
+  toggle(e:Event,index:number){
     const element=e.currentTarget as HTMLElement;
+    const sibbblings=element.parentElement?.parentElement?.children;
+    if(sibbblings){
+      for(let i=0;i<sibbblings?.length;i++){
+        if(i!=index){
+          console.log(1)
+          sibbblings.item(i)?.classList.remove('active')
+        }
+      }
+    }
     element.parentElement?.classList.toggle("active");
   }
   @Input() items:MenuItem[]=[];
