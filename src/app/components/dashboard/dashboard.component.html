@@ -1,0 +1,27 @@
+<mat-drawer-container class="example-container" (backdropClick)="toggleMenu()" [hasBackdrop]="sidebarBackdrop">
+    <mat-drawer [class.backdrop-sidebar]="sidebarBackdrop"  class="border-0" [mode]="sidebarMode" [opened]="sidebarOpen">
+     <mat-icon *ngIf="sidebarBackdrop" (click)="toggleMenu()" class="close-button">close</mat-icon>
+     <app-sidebar (toggleSideBar)="toggleMenuMobile()"></app-sidebar>
+   </mat-drawer>
+   <mat-drawer-content class="mat-drawer-content">
+    <header>
+        <div class="navbar-container">
+          <mat-icon (click)="toggleMenu()" class="toggle-button">menu</mat-icon>
+          <div style="width: 100%;">
+            <app-navbar></app-navbar>
+          </div>
+        </div>
+       <app-breadcrumb></app-breadcrumb>
+    </header>
+    <main>
+        <mat-card>
+            <mat-card-content>
+                <router-outlet/>
+            </mat-card-content>
+        </mat-card>
+    </main>
+    <app-footer>
+
+    </app-footer>
+   </mat-drawer-content>
+ </mat-drawer-container>
