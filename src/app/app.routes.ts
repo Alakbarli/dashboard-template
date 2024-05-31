@@ -36,27 +36,32 @@ export const routes: Routes = [
             ,{
                 path:'link1',
                 component:MainPageComponent,
-                data: { breadcrumb: 'dashboard11' },
+                data: { breadcrumb: 'dashboard1177777777' },
             },
             {
                 path:'link2',
-                component:MainPageComponent
+                component:MainPageComponent,
+                data: { breadcrumb: 'dashboard1166666666666' },
             },
             {
                 path:'link3',
-                component:MainPageComponent
+                component:MainPageComponent,
+                data: { breadcrumb: 'dashboard1144444444' },
             },
             {
                 path:'link4',
-                component:MainPageComponent
+                component:MainPageComponent,
+                data: { breadcrumb: 'dashboard113333333333' },
             },
             {
                 path:'link5',
-                component:MainPageComponent
+                component:MainPageComponent,
+                data: { breadcrumb: 'dashboard1122222' },
             },
             {
                 path:'link6',
-                component:MainPageComponent
+                component:MainPageComponent,
+                data: { breadcrumb: 'dashboard1111111' },
             }
         ]
     }

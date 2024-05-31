@@ -20,8 +20,10 @@ export class SidebarItemComponent {
     if(sibbblings){
       for(let i=0;i<sibbblings?.length;i++){
         if(i!=index){
-          console.log(1)
-          sibbblings.item(i)?.classList.remove('active')
+          const sibbling= sibbblings.item(i);
+          if(sibbling&&sibbling.firstElementChild&&sibbling.firstElementChild?.tagName=='DIV'){
+            sibbling.classList.remove('active')
+          }
         }
       }
     }
