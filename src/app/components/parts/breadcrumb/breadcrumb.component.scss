@@ -1,6 +1,12 @@
+@import '../../../../styles/variables';
+
 .breadcumb-container{
-    padding: 1rem;
-    background-color: rgb(243, 235, 235);
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    padding: 1em;
+    //background-color: lighten($tertiary-color, 50);
+    //border-bottom-left-radius: 15px;
+    //border-bottom-right-radius: 15px;
+    a{
+        text-decoration: none;
+        color: $dark;
+    }
 }

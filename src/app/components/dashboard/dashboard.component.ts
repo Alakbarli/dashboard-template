@@ -11,6 +11,7 @@ import { BreadcrumbComponent } from '../parts/breadcrumb/breadcrumb.component';
 import { FooterComponent } from '../parts/footer/footer.component';
 import { NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,7 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     LayoutModule,MatSidenavModule,MatIconModule,
     SidebarComponent,NavbarComponent,BreadcrumbComponent,
-    RouterOutlet,FooterComponent,NgIf,MatCardModule
+    RouterOutlet,FooterComponent,NgIf,MatCardModule,MatDividerModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

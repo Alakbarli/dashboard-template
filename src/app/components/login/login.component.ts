@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EffectRef, effect, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,9 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private router:Router){
-
   }
   login(){
-    this.router.navigate(['main-page']);
+    //this.router.navigate(['main-page']);
   }
 }

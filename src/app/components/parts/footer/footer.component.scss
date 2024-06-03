@@ -1,4 +1,6 @@
+@import '../../../../styles/variables';
+
 footer{
     padding: .5rem;
-    background-color: wheat;
+    background-color: lighten($tertiary-color, 50);
 }
