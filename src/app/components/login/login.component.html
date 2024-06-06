@@ -1,8 +1,35 @@
-<div class="login-container">
-    <form action="">
-        
-    </form>
+<div class="form-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <main class="form-signin w-100 m-auto">
+                    <form (ngSubmit)="submit()" [formGroup]="form">
+                        <div class="text-center">
+                            <img class="mb-2 text-center" src="images/icons/logo-black.svg">
+                        </div>
+                        <h1 class="h3 mb-3 fw-normal">Giriş</h1>
+    
+                        <div class="form-group mb-3">
+                            <mat-form-field appearance="outline">
+                                <mat-label>E-mail</mat-label>
+                                <input formControlName="email" matInput placeholder="mail@mail.com">
+                                <mat-icon matSuffix> email</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group mb-3">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Şifrə</mat-label>
+                                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="clickEvent($event)"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <button [disabled]="form.invalid" class="w-100 py-2" mat-flat-button color="primary">Giriş</button>
+                    </form>
+                </main>
+            </div>
+        </div>
+    </div>
 </div>
-<button (click)="login()">
-    Login
-</button>

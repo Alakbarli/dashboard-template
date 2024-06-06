@@ -1,3 +1,4 @@
+@import '../../../../styles/variables';
 nav{
     width: 100%;
     display: flex;
@@ -14,4 +15,7 @@ nav{
     .right-panel{
 
     }
+}
+button{
+    display: flex;
 }

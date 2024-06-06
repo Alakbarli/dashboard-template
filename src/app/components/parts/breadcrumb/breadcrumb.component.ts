@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from '../../../core/services/breadcrumb.service';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-breadcrumb',
   standalone: true,
-  imports: [NgFor,NgIf,RouterLink],
+  imports: [NgFor,NgIf,RouterLink,MatIconModule],
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss'
 })

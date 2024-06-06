@@ -12,6 +12,9 @@ import { FooterComponent } from '../parts/footer/footer.component';
 import { NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SpinnerService } from '../../core/services/spinner.service';
+import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,8 +22,7 @@ import {MatDividerModule} from '@angular/material/divider';
   imports: [
     LayoutModule,MatSidenavModule,MatIconModule,
     SidebarComponent,NavbarComponent,BreadcrumbComponent,
-    RouterOutlet,FooterComponent,NgIf,MatCardModule,MatDividerModule
-  ],
+    RouterOutlet,FooterComponent,NgIf,MatCardModule,MatProgressBarModule,MatDividerModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -31,15 +33,26 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   screenType: string = ScreenTypes.desktop;
   sidebarMode: "over" | "push" | "side" = "side";
   sidebarBackdrop: boolean = false;
-  constructor(private route: ActivatedRoute, private router: Router, private breakpointObserver: BreakpointObserver,) {
+  showProgress:boolean=false;
+  requestSubscription?:Subscription;
+  constructor(private route: ActivatedRoute, private router: Router, private breakpointObserver: BreakpointObserver,private spinner:SpinnerService,private apiService:ApiService) {
     this.subscribeScreenSize();
+    this.apiService.getWeather().subscribe(
+      {
+        next:res=>{
+          console.log(
+            res
+          )
+        }
+      }
+    )
   }
 
   ngAfterViewInit(): void {
 
   }
   ngOnInit(): void {
-
+    this.requestSubscription=this.spinner.requestProgress.subscribe({next:res=>this.showProgress=res});
   }
   toggleMenu() {
     this.sidebarOpen = !this.sidebarOpen;
@@ -91,5 +104,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
   ngOnDestroy() {
+    this.requestSubscription?.unsubscribe();
   }
 }

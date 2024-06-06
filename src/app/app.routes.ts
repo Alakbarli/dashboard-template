@@ -3,24 +3,19 @@ import { LoginComponent } from './components/login/login.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
+import { authGuard } from './core/guards/auth.guard';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 export const routes: Routes = [
     {
-        path:'',
-        component:PublicLayoutComponent,
-        children:[
-            { path: '', redirectTo: '/login', pathMatch: 'full' },
-            {
-                path: 'login',
-                component: LoginComponent,
-                data: {},
-              },
-        ]
+        path:'login',
+        component:LoginComponent
     },
     {
         path:'',
         component:DashboardComponent,
         data:{ breadcrumb: 'Dashboard' },
+        canActivate:[authGuard],
         children:[
             {
                 path:'',
@@ -62,6 +57,20 @@ export const routes: Routes = [
                 path:'link6',
                 component:MainPageComponent,
                 data: { breadcrumb: 'dashboard1111111' },
+            },
+            {
+                path: "link6/link6-child",
+                component: MainPageComponent,
+                data: {
+                    breadcrumbs: [
+                        { label: "link6", url: "link6" },
+                        { label:"link6-child",url:"link6-child"}
+                    ]
+                },
+            },
+            {
+                path:"file-input",
+                component:FileUploadComponent
             }
         ]
     }

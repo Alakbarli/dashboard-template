@@ -68,6 +68,17 @@ export class SidebarComponent {
           ]
         }
       ]
+    },
+    {
+      label:"Form",
+      icon:"border_color",
+      children:[
+        {
+          label:"File input",
+          icon:"insert_drive_file",
+          link:"file-input"
+        }
+      ]
     }
   ]
 

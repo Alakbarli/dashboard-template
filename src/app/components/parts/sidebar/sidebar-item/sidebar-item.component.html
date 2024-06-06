@@ -1,18 +1,18 @@
 <ul>
-    <li *ngFor="let item of items; trackBy:trackById;let index = index" [ngClass]="{'active': isActive(item)}" [style.paddingLeft.px]="depth*10">
-      <a *ngIf="item.link" [routerLink]="item.link" routerLinkActive="active">
-        <mat-icon>{{item.icon}}</mat-icon>
-        {{ item.label }}
-       </a>
-      <div class="item-label" (click)="toggle($event,index)" *ngIf="!item.link">
-        <span>
-            <mat-icon>{{item.icon}}</mat-icon>
-            {{ item.label }}
-        </span>
-        <mat-icon class="menu-arrow">arrow_forward_ios</mat-icon>
-      </div>
-      <div class="children">
-        <app-sidebar-item *ngIf="item.children" [items]="item.children" [depth]="depth + 1"></app-sidebar-item>
-      </div>
-    </li>
+  <li *ngFor="let item of items; trackBy:trackById;let index = index" [ngClass]="{'active': isActive(item)}" [style.paddingLeft.px]="depth*10">
+    <a *ngIf="item.link" [routerLink]="item.link" [title]="item.label" routerLinkActive="active">
+      <mat-icon>{{item.icon}}</mat-icon>
+      {{ item.label }}
+     </a>
+    <div class="item-label" (click)="toggle($event,index)" *ngIf="!item.link">
+      <span>
+          <mat-icon>{{item.icon}}</mat-icon>
+          {{ item.label }}
+      </span>
+      <mat-icon class="menu-arrow">arrow_forward_ios</mat-icon>
+    </div>
+    <div class="children">
+      <app-sidebar-item *ngIf="item.children" [items]="item.children" [depth]="depth + 1"></app-sidebar-item>
+    </div>
+  </li>
 </ul>

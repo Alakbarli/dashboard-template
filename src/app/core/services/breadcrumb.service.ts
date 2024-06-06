@@ -31,8 +31,14 @@ export class BreadcrumbService {
       if (routeURL !== '') {
         url += `/${routeURL}`;
       }
-
-      breadcrumbs.push({ label: child.snapshot.data['breadcrumb'], url: url });
+      if(child.snapshot.data['breadcrumb']){
+        breadcrumbs.push({ label: child.snapshot.data['breadcrumb'], url: url });
+      }
+      if(child.snapshot.data['breadcrumbs']&&Array.isArray(child.snapshot.data['breadcrumbs'])){
+        (child.snapshot.data['breadcrumbs'] as Array<{label:string,url:string}>).forEach(element => {
+          breadcrumbs.push(element);
+        });
+      }
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
 

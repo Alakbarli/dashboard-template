@@ -1,45 +1,52 @@
 @import '../../../styles/variables';
 .example-container {
- height: 100%;
- .close-button{
-  font-size: 25px;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  color: white;
- }
-}
-mat-drawer {
-  border-radius: 0;
-}
-header{
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background-color: lighten($tertiary-color, 50%);
-  .navbar-container{
-    min-height: 70px;
-    //border-bottom: 1px solid #616060;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    .toggle-button{
-      cursor: pointer;
+    height: 100%;
+
+    .close-button {
+        font-size: 25px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: white;
     }
-  }
 }
 
-.mat-drawer-content{
-  display: flex;
-  flex-direction: column;
-  main{
-    padding: 1rem;
-    flex-grow: 1;
-    mat-card{
-      height: 100%;
+mat-drawer {
+    border-radius: 0;
+}
+
+header {
+    background-color: lighten($tertiary-color, 50);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    .navbar-container {
+        background-color: $white;
+        min-height: 70px;
+        //border-bottom: 1px solid #616060;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+
+        .toggle-button {
+            cursor: pointer;
+        }
     }
-  }
+}
+
+.mat-drawer-content {
+    display: flex;
+    flex-direction: column;
+    background-color: lighten($tertiary-color, 50);
+    main {
+        padding: 1rem;
+        flex-grow: 1;
+        padding-top: 0;
+        mat-card {
+            height: 100%;
+        }
+    }
 
 }
 
