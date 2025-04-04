@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   sidebarBackdrop: boolean = false;
   showProgress:boolean=false;
   requestSubscription?:Subscription;
-  constructor(private route: ActivatedRoute, private router: Router, private breakpointObserver: BreakpointObserver,private spinner:SpinnerService,private apiService:ApiService) {
+  constructor(private cd:ChangeDetectorRef,private route: ActivatedRoute, private router: Router, private breakpointObserver: BreakpointObserver,private spinner:SpinnerService,private apiService:ApiService) {
     this.subscribeScreenSize();
     this.apiService.getWeather().subscribe(
       {
@@ -52,7 +52,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
   ngOnInit(): void {
-    this.requestSubscription=this.spinner.requestProgress.subscribe({next:res=>this.showProgress=res});
+    this.requestSubscription=this.spinner.requestProgress.subscribe({next:res=>{
+      this.showProgress=res;
+      this.cd.detectChanges();
+    }});
   }
   toggleMenu() {
     this.sidebarOpen = !this.sidebarOpen;
