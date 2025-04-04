@@ -31,17 +31,31 @@ export class BreadcrumbService {
       if (routeURL !== '') {
         url += `/${routeURL}`;
       }
-      if(child.snapshot.data['breadcrumb']){
+      if(child.snapshot.data['breadcrumb']&&!Array.isArray(child.snapshot.data['breadcrumbs'])){
         breadcrumbs.push({ label: child.snapshot.data['breadcrumb'], url: url });
       }
       if(child.snapshot.data['breadcrumbs']&&Array.isArray(child.snapshot.data['breadcrumbs'])){
         (child.snapshot.data['breadcrumbs'] as Array<{label:string,url:string}>).forEach(element => {
-          breadcrumbs.push(element);
+          let generatedUrl= this.replaceRouteId(element.url,this.router.url)
+           breadcrumbs.push({label:element.label,url:generatedUrl});
         });
       }
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
 
     return breadcrumbs;
+  }
+
+  private replaceRouteId(snapshotUrl:string,currentUrl:string){
+    //delete /
+    currentUrl=currentUrl.substring(1)
+    let snArray=snapshotUrl.split("/");
+    let currentArr=currentUrl.split("/");
+    for(let i=0;i<snArray.length;i++){
+      if(snArray[i]!=currentArr[i]){
+        snArray[i]=currentArr[i];
+      }
+    }
+   return snArray.join("/")
   }
 }
