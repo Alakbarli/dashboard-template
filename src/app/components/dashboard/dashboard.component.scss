@@ -21,6 +21,11 @@ header {
     position: sticky;
     top: 0;
     z-index: 2;
+    mat-progress-bar{
+        position: absolute;
+        left: 0;
+        top:0;
+    }
     .navbar-container {
         background-color: $white;
         min-height: 70px;

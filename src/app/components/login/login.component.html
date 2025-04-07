@@ -20,7 +20,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Şifrə</mat-label>
                                 <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
-                                <button mat-icon-button matSuffix (click)="clickEvent($event)"
+                                <button type="button" mat-icon-button matSuffix (click)="clickEvent($event)"
                                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
